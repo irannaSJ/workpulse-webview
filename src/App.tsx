@@ -307,56 +307,89 @@ function AppContent() {
      Routes
      ======================================================= */
 
+  
   return (
-    <Routes>
+    <>
+      {/* Global Refresh Control */}
+      <div
+        role="toolbar"
+        aria-label="WorkPulse actions"
+        style={{
+          position: "fixed",
+          right: "20px",
+          bottom: "calc(20px + env(safe-area-inset-bottom, 0px))",
+          zIndex: 2000,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <button
+          type="button"
+          onClick={() => window.location.reload()}
+          aria-label="Refresh WorkPulse"
+          title="Refresh WorkPulse"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+            padding: "12px 16px",
+            border: "none",
+            borderRadius: "999px",
+            background: "var(--wp-color-primary, #2563eb)",
+            color: "#ffffff",
+            cursor: "pointer",
+            font: "inherit",
+            fontWeight: 600,
+            boxShadow: "0 4px 14px rgba(0, 0, 0, 0.22)",
+          }}
+        >
+          <span
+            aria-hidden="true"
+            style={{ fontSize: "20px", lineHeight: 1 }}
+          >
+            ↻
+          </span>
+          <span>Refresh</span>
+        </button>
+      </div>
 
-      {/* HOME */}
-      <Route
-        path="/"
-        element={
-          <div className="app-shell">
-            <main className="app-shell__content">
-              <HomeRoute
-                definition={definition}
-              />
-            </main>
-          </div>
-        }
-      />
+      {/* Existing Routes — preserved */}
+      <Routes>
+        {/* HOME */}
+        <Route
+          path="/"
+          element={
+            <div className="app-shell">
+              <main className="app-shell__content">
+                <HomeRoute definition={definition} />
+              </main>
+            </div>
+          }
+        />
 
-      {/* FORM */}
-      <Route
-        path="/form/:sectionId"
-        element={
-          <FormRoute
-            definition={definition}
-          />
-        }
-      />
+        {/* FORM */}
+        <Route
+          path="/form/:sectionId"
+          element={<FormRoute definition={definition} />}
+        />
 
-      {/* LIST */}
-      <Route
-        path="/list/:sectionId"
-        element={
-          <ListRoute
-            definition={definition}
-          />
-        }
-      />
+        {/* LIST */}
+        <Route
+          path="/list/:sectionId"
+          element={<ListRoute definition={definition} />}
+        />
 
-      {/* FALLBACK */}
-      <Route
-        path="*"
-        element={
-          <Navigate
-            to="/"
-            replace
-          />
-        }
-      />
-
-    </Routes>
+        {/* FALLBACK */}
+        <Route
+          path="*"
+          element={<Navigate to="/" replace />}
+        />
+      </Routes>
+    </>
   );
+
 }
 
 
