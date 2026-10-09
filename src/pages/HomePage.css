@@ -1,0 +1,921 @@
+/* =========================================================
+   WorkPulse Home Page
+   Light Theme
+   Poppins
+   ========================================================= */
+
+.workpulse-home {
+  width: 100%;
+  max-width: var(--wp-content-max-width);
+  min-width: 0;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.workpulse-home__hero {
+  position: relative;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  overflow: hidden;
+
+  margin-bottom: var(--wp-space-8);
+  padding: var(--wp-space-8);
+
+  border: 1px solid var(--wp-color-border);
+  border-radius: var(--wp-radius-2xl);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(239, 246, 255, 0.96),
+      rgba(238, 242, 255, 0.94)
+    );
+
+  box-shadow: var(--wp-shadow-sm);
+  box-sizing: border-box;
+
+  
+}
+
+.workpulse-home__eyebrow {
+  max-width: 100%;
+
+  overflow-wrap: anywhere;
+
+  word-break: break-word;
+}
+
+
+
+.workpulse-home__hero > div {
+  position: relative;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+
+.workpulse-home__hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  top: -150px;
+  right: -110px;
+
+  border-radius: 50%;
+
+  background: rgba(37, 99, 235, 0.09);
+
+  pointer-events: none;
+}
+
+.workpulse-home__hero::after {
+  content: "";
+
+  position: absolute;
+
+  width: 200px;
+  height: 200px;
+
+  right: 15%;
+  bottom: -150px;
+
+  border-radius: 50%;
+
+  background: rgba(79, 70, 229, 0.07);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.workpulse-home__hero-content {
+  position: relative;
+  z-index: var(--wp-z-base);
+
+  width: 100%;
+  max-width: 720px;
+  min-width: 0;
+}
+
+
+/* =========================================================
+   HERO BADGE.workpulse-home__hero > div {
+  position: relative;
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+   ========================================================= */
+
+.workpulse-home__hero-badge {
+  display: inline-flex;
+  align-items: center;
+
+  gap: var(--wp-space-2);
+
+  margin-bottom: var(--wp-space-4);
+
+  padding:
+    var(--wp-space-2)
+    var(--wp-space-3);
+
+  border: 1px solid rgba(37, 99, 235, 0.14);
+  border-radius: var(--wp-radius-pill);
+
+  background: rgba(255, 255, 255, 0.9);
+
+  color: var(--wp-color-primary);
+
+  font-size: var(--wp-font-size-xs);
+  font-weight: var(--wp-font-weight-semibold);
+
+  letter-spacing: var(--wp-letter-spacing-wide);
+  text-transform: uppercase;
+
+  box-shadow: var(--wp-shadow-xs);
+}
+
+.workpulse-home__hero-badge-dot {
+  width: 7px;
+  height: 7px;
+
+  flex: 0 0 7px;
+
+  border-radius: 50%;
+
+  background: var(--wp-color-primary);
+
+  box-shadow:
+    0 0 0 4px var(--wp-color-primary-soft);
+}
+
+
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
+
+.workpulse-home__title {
+  max-width: 100%;
+
+  margin: 0;
+
+  color: var(--wp-color-text);
+
+  font-size: var(--wp-font-size-3xl);
+  font-weight: var(--wp-font-weight-bold);
+
+  line-height: var(--wp-line-height-tight);
+  letter-spacing: var(--wp-letter-spacing-tight);
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   HERO SUBTITLE
+   ========================================================= */
+
+.workpulse-home__subtitle {
+  max-width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  margin:
+    var(--wp-space-4)
+    0
+    0;
+  margin-right: 0;
+  
+
+  color: var(--wp-color-text-muted);
+
+  font-size: var(--wp-font-size-md);
+  font-weight: var(--wp-font-weight-regular);
+
+  line-height: var(--wp-line-height-relaxed);
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+}
+
+
+/* =========================================================
+   QUICK ACTION SECTION
+   ========================================================= */
+
+.workpulse-home__actions {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.workpulse-home__section-header {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: var(--wp-space-4);
+
+  margin-bottom: var(--wp-space-5);
+}
+
+.workpulse-home__section-header > div {
+  min-width: 0;
+}
+
+
+/* =========================================================
+   SECTION EYEBROW
+   ========================================================= */
+
+.workpulse-home__section-eyebrow {
+  display: block;
+
+  margin-bottom: var(--wp-space-1);
+
+  color: var(--wp-color-primary);
+
+  font-size: var(--wp-font-size-xs);
+  font-weight: var(--wp-font-weight-semibold);
+
+  letter-spacing: var(--wp-letter-spacing-wide);
+}
+
+
+/* =========================================================
+   SECTION TITLE
+   ========================================================= */
+
+.workpulse-home__section-title {
+  margin: 0;
+
+  color: var(--wp-color-text);
+
+  font-size: var(--wp-font-size-xl);
+  font-weight: var(--wp-font-weight-semibold);
+
+  line-height: var(--wp-line-height-tight);
+}
+
+
+/* =========================================================
+   SECTION SUBTITLE
+   ========================================================= */
+
+.workpulse-home__section-subtitle {
+  margin:
+    var(--wp-space-2)
+    0
+    0;
+
+  color: var(--wp-color-text-muted);
+
+  font-size: var(--wp-font-size-sm);
+
+  line-height: var(--wp-line-height-normal);
+}
+
+
+/* =========================================================
+   MODULE COUNT
+   ========================================================= */
+
+.workpulse-home__module-count {
+  flex: 0 0 auto;
+
+  padding:
+    var(--wp-space-2)
+    var(--wp-space-3);
+
+  border-radius: var(--wp-radius-pill);
+
+  background: var(--wp-color-surface-soft);
+
+  color: var(--wp-color-text-muted);
+
+  font-size: var(--wp-font-size-xs);
+  font-weight: var(--wp-font-weight-medium);
+}
+
+
+/* =========================================================
+   QUICK ACTION GRID
+   ========================================================= */
+
+.workpulse-home__grid {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: var(--wp-space-5);
+}
+
+
+/* =========================================================
+   QUICK ACTION CARD
+   ========================================================= */
+
+.workpulse-quick-action {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: var(--wp-space-4);
+
+  padding: var(--wp-space-5);
+
+  border: 1px solid var(--wp-color-border);
+  border-radius: var(--wp-radius-xl);
+
+  background: var(--wp-color-surface);
+
+  color: var(--wp-color-text);
+
+  text-align: left;
+
+  cursor: pointer;
+
+  box-shadow: var(--wp-shadow-xs);
+
+  transition:
+    transform var(--wp-transition-normal),
+    border-color var(--wp-transition-normal),
+    box-shadow var(--wp-transition-normal),
+    background var(--wp-transition-normal);
+}
+
+.workpulse-quick-action:hover {
+  border-color: rgba(37, 99, 235, 0.28);
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f8fbff
+    );
+
+  transform: translateY(-3px);
+
+  box-shadow: var(--wp-shadow-md);
+}
+
+.workpulse-quick-action:focus-visible {
+  outline: 2px solid var(--wp-color-primary);
+  outline-offset: 3px;
+}
+
+.workpulse-quick-action:active {
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.workpulse-quick-action__icon {
+  width: 48px;
+  height: 48px;
+
+  flex: 0 0 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--wp-radius-lg);
+
+  font-size: var(--wp-font-size-xl);
+  font-weight: var(--wp-font-weight-semibold);
+
+  transition:
+    transform var(--wp-transition-normal);
+}
+
+.workpulse-quick-action__icon--form {
+  background: var(--wp-color-accent-soft);
+  color: var(--wp-color-accent);
+}
+
+.workpulse-quick-action__icon--list {
+  background: var(--wp-color-primary-soft);
+  color: var(--wp-color-primary);
+}
+
+.workpulse-quick-action:hover
+.workpulse-quick-action__icon {
+  transform: scale(1.05);
+}
+
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.workpulse-quick-action__content {
+  min-width: 0;
+
+  flex: 1 1 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--wp-space-1);
+
+  overflow: hidden;
+}
+
+.workpulse-quick-action__title {
+  display: block;
+
+  max-width: 100%;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: var(--wp-color-text);
+
+  font-size: var(--wp-font-size-md);
+  font-weight: var(--wp-font-weight-semibold);
+}
+
+.workpulse-quick-action__type {
+  display: block;
+
+  max-width: 100%;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: var(--wp-color-text-muted);
+
+  font-size: var(--wp-font-size-xs);
+}
+
+
+/* =========================================================
+   ARROW
+   ========================================================= */
+
+.workpulse-quick-action__arrow {
+  flex: 0 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  border-radius: var(--wp-radius-pill);
+
+  background: var(--wp-color-surface-soft);
+
+  color: var(--wp-color-text-muted);
+
+  font-size: var(--wp-font-size-lg);
+  font-weight: var(--wp-font-weight-medium);
+
+  transition:
+    transform var(--wp-transition-normal),
+    background var(--wp-transition-normal),
+    color var(--wp-transition-normal);
+}
+
+.workpulse-quick-action:hover
+.workpulse-quick-action__arrow {
+  transform: translateX(3px);
+
+  background: var(--wp-color-primary-soft);
+
+  color: var(--wp-color-primary);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1024px) {
+
+  .workpulse-home__hero {
+    padding: var(--wp-space-8);
+  }
+
+  .workpulse-home__grid {
+    gap: var(--wp-space-4);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .workpulse-home {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+
+  /* -------------------------------------------------------
+     Hero
+     ------------------------------------------------------- */
+
+  .workpulse-home__hero {
+    margin-bottom: var(--wp-space-7);
+
+    padding: var(--wp-space-6);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin-left: 0;
+    margin-right: 0;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    border-radius: var(--wp-radius-xl);
+  }
+
+  .workpulse-home__hero > div {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    padding-right: var(--wp-space-4);
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+  }
+
+
+  .workpulse-home__eyebrow {
+    max-width: 100%;
+
+    overflow-wrap: anywhere;
+  }
+
+
+  .workpulse-home__hero-badge {
+    margin-bottom: var(--wp-space-3);
+  }
+
+
+  .workpulse-home__title {
+    max-width: 100%;
+    font-size: var(--wp-font-size-2xl);
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+
+
+    line-height: 1.25;
+  }
+
+
+  .workpulse-home__subtitle {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    padding-right: var(--wp-space-2);
+
+    margin-top: var(--wp-space-3);
+
+    font-size: var(--wp-font-size-sm);
+
+    line-height: var(--wp-line-height-normal);
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: normal;
+  }
+
+
+  /* -------------------------------------------------------
+     Section Header
+     ------------------------------------------------------- */
+
+  .workpulse-home__section-header {
+    align-items: center;
+
+    gap: var(--wp-space-3);
+
+    margin-bottom: var(--wp-space-4);
+  }
+
+
+  .workpulse-home__section-title {
+    font-size: var(--wp-font-size-lg);
+  }
+
+
+  .workpulse-home__section-subtitle {
+    margin-top: var(--wp-space-1);
+
+    font-size: var(--wp-font-size-xs);
+  }
+
+
+  /* -------------------------------------------------------
+     Module Count
+     ------------------------------------------------------- */
+
+  .workpulse-home__module-count {
+    padding:
+      var(--wp-space-1)
+      var(--wp-space-2);
+
+    white-space: nowrap;
+  }
+
+
+  /* -------------------------------------------------------
+     Single Column
+     ------------------------------------------------------- */
+
+  .workpulse-home__grid {
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: var(--wp-space-3);
+  }
+
+
+  /* -------------------------------------------------------
+     Quick Action Card
+     ------------------------------------------------------ */
+
+     /* -------------------------------------------------------
+     Quick Actions
+     ------------------------------------------------------- */
+
+  .workpulse-home__actions {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    overflow: hidden;
+  }
+
+
+  .workpulse-home__section-header {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+
+  .workpulse-home__grid {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+
+  .workpulse-quick-action {
+    min-height: 68px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    box-sizing: border-box;
+
+    gap: var(--wp-space-3);
+
+    padding:
+      var(--wp-space-3)
+      var(--wp-space-3);
+  }
+
+
+  .workpulse-quick-action__icon {
+    width: 42px;
+    height: 42px;
+
+    flex-basis: 42px;
+
+    border-radius: var(--wp-radius-md);
+
+    font-size: var(--wp-font-size-lg);
+  }
+
+
+  .workpulse-quick-action__title {
+    font-size: var(--wp-font-size-sm);
+  }
+
+
+  .workpulse-quick-action__type {
+    font-size: var(--wp-font-size-xs);
+  }
+
+
+  .workpulse-quick-action__arrow {
+    width: 28px;
+    height: 28px;
+
+    font-size: var(--wp-font-size-md);
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .workpulse-home__hero {
+    margin-bottom: var(--wp-space-6);
+
+    padding: var(--wp-space-5);
+
+    border-radius: var(--wp-radius-lg);
+  }
+
+
+  .workpulse-home__title {
+    font-size: var(--wp-font-size-xl);
+  }
+
+
+  .workpulse-home__subtitle {
+    font-size: var(--wp-font-size-xs);
+
+    line-height: 1.6;
+  }
+
+
+  .workpulse-home__section-header {
+    align-items: flex-start;
+
+    margin-bottom: var(--wp-space-4);
+  }
+
+
+  .workpulse-home__section-eyebrow {
+    font-size: 11px;
+  }
+
+
+  .workpulse-home__section-title {
+    font-size: var(--wp-font-size-lg);
+  }
+
+
+  .workpulse-home__section-subtitle {
+    max-width: 220px;
+  }
+
+
+  .workpulse-home__module-count {
+    margin-top: 2px;
+  }
+
+
+  .workpulse-home__grid {
+    gap: var(--wp-space-2);
+  }
+
+
+  .workpulse-quick-action {
+    min-height: 64px;
+
+    padding:
+      var(--wp-space-3);
+  }
+
+
+  .workpulse-quick-action__icon {
+    width: 40px;
+    height: 40px;
+
+    flex-basis: 40px;
+  }
+
+
+  .workpulse-quick-action__arrow {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .workpulse-home__hero {
+    padding: var(--wp-space-4);
+  }
+
+
+  .workpulse-home__title {
+    font-size: var(--wp-font-size-lg);
+  }
+
+
+  .workpulse-home__subtitle {
+    font-size: 12px;
+  }
+
+
+  .workpulse-quick-action {
+    gap: var(--wp-space-2);
+
+    padding:
+      var(--wp-space-2)
+      var(--wp-space-3);
+  }
+
+
+  .workpulse-quick-action__icon {
+    width: 38px;
+    height: 38px;
+
+    flex-basis: 38px;
+  }
+
+
+  .workpulse-quick-action__arrow {
+    width: 24px;
+    height: 24px;
+
+    font-size: var(--wp-font-size-sm);
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .workpulse-quick-action,
+  .workpulse-quick-action__icon,
+  .workpulse-quick-action__arrow {
+    transition: none;
+  }
+}

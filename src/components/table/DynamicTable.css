@@ -1,0 +1,791 @@
+/* =========================================================
+   WorkPulse Dynamic Table
+   ========================================================= */
+
+.dynamic-table-container {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  border: 1px solid var(--wp-color-border);
+  border-radius: var(--wp-radius-xl);
+
+  background: var(--wp-color-surface);
+
+  box-shadow: var(--wp-shadow-sm);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   OPTIONAL HEADER
+   ========================================================= */
+
+.dynamic-table-header {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: var(--wp-space-4);
+
+  padding:
+    var(--wp-space-4)
+    var(--wp-space-5);
+
+  border-bottom: 1px solid var(--wp-color-border);
+}
+
+.dynamic-table-title {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--wp-space-1);
+}
+
+.dynamic-table-title h2 {
+  margin: 0;
+
+  color: var(--wp-color-text);
+
+  font-size: var(--wp-font-size-lg);
+  font-weight: var(--wp-font-weight-semibold);
+}
+
+.dynamic-table-title span {
+  color: var(--wp-color-text-muted);
+
+  font-size: var(--wp-font-size-xs);
+}
+
+.table-count {
+  flex: 0 0 auto;
+
+  padding:
+    var(--wp-space-1)
+    var(--wp-space-3);
+
+  border-radius: var(--wp-radius-pill);
+
+  background: var(--wp-color-primary-soft);
+
+  color: var(--wp-color-primary);
+
+  font-size: var(--wp-font-size-xs);
+  font-weight: var(--wp-font-weight-semibold);
+}
+
+
+/* =========================================================
+   OPTIONAL TOOLBAR
+   ========================================================= */
+
+.dynamic-table-toolbar {
+  padding:
+    var(--wp-space-4)
+    var(--wp-space-5);
+
+  border-bottom: 1px solid var(--wp-color-border);
+}
+
+.table-search {
+  position: relative;
+
+  width: 100%;
+  max-width: 420px;
+}
+
+.table-search input {
+  width: 100%;
+  height: var(--wp-control-height-md);
+
+  padding:
+    0
+    var(--wp-space-10);
+
+  border: 1px solid var(--wp-color-border);
+
+  border-radius: var(--wp-radius-lg);
+
+  background: var(--wp-color-background);
+
+  color: var(--wp-color-text);
+
+  font-size: var(--wp-font-size-sm);
+
+  outline: none;
+}
+
+.table-search input:focus {
+  border-color: var(--wp-color-primary);
+
+  background: var(--wp-color-surface);
+
+  box-shadow:
+    0 0 0 3px var(--wp-color-primary-soft);
+}
+
+.search-icon {
+  position: absolute;
+
+  left: var(--wp-space-3);
+  top: 50%;
+
+  color: var(--wp-color-text-muted);
+
+  transform: translateY(-50%);
+
+  pointer-events: none;
+}
+
+.search-clear {
+  position: absolute;
+
+  right: var(--wp-space-2);
+  top: 50%;
+
+  width: 30px;
+  height: 30px;
+
+  border: 0;
+  border-radius: var(--wp-radius-md);
+
+  background: transparent;
+
+  color: var(--wp-color-text-muted);
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+}
+
+.search-clear:hover {
+  background: var(--wp-color-surface-soft);
+
+  color: var(--wp-color-danger);
+}
+
+
+/* =========================================================
+   TABLE SCROLL
+   ========================================================= */
+
+.dynamic-table-scroll {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: thin;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.dynamic-table {
+  width: 100%;
+
+  min-width: max-content;
+
+  border-collapse: separate;
+  border-spacing: 0;
+
+  font-family: var(--wp-font-family);
+
+  color: var(--wp-color-text-secondary);
+}
+
+
+/* =========================================================
+   TABLE HEADER
+   ========================================================= */
+
+.dynamic-table thead {
+  background: #f8fafc;
+}
+
+.dynamic-table th {
+  height: 48px;
+
+  padding:
+    var(--wp-space-3)
+    var(--wp-space-4);
+
+  border-bottom: 1px solid var(--wp-color-border);
+
+  color: var(--wp-color-text-muted);
+
+  font-size: var(--wp-font-size-xs);
+  font-weight: var(--wp-font-weight-semibold);
+
+  letter-spacing: 0.02em;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   TABLE BODY
+   ========================================================= */
+
+.dynamic-table td {
+  height: 56px;
+
+  padding:
+    var(--wp-space-3)
+    var(--wp-space-4);
+
+  border-bottom: 1px solid var(--wp-color-border-subtle);
+
+  color: var(--wp-color-text-secondary);
+
+  font-size: var(--wp-font-size-sm);
+
+  white-space: nowrap;
+}
+
+.dynamic-table tbody tr {
+  background: var(--wp-color-surface);
+
+  transition:
+    background var(--wp-transition-fast);
+}
+
+.dynamic-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.dynamic-table tbody tr:hover {
+  background: #f8fbff;
+}
+
+.table-row-clickable {
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   STICKY FIRST COLUMN
+   ========================================================= */
+
+.dynamic-table__sticky-column {
+  position: sticky;
+
+  left: 0;
+
+  z-index: 2;
+
+  background: var(--wp-color-surface);
+}
+
+.dynamic-table thead
+.dynamic-table__sticky-column {
+  z-index: 5;
+
+  background: #f8fafc;
+}
+
+.dynamic-table tbody tr:hover
+.dynamic-table__sticky-column {
+  background: #f8fbff;
+}
+
+.dynamic-table__first-column {
+  font-weight: var(--wp-font-weight-medium);
+
+  box-shadow:
+    8px 0 12px -12px
+    rgba(15, 23, 42, 0.35);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.table-empty {
+  height: 260px;
+
+  text-align: center;
+}
+
+.table-empty-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--wp-space-8);
+}
+
+.empty-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: var(--wp-space-4);
+
+  border-radius: var(--wp-radius-xl);
+
+  background: var(--wp-color-surface-soft);
+
+  color: var(--wp-color-text-subtle);
+
+  font-size: var(--wp-font-size-xl);
+}
+
+.table-empty-content h3 {
+  margin: 0;
+
+  color: var(--wp-color-text);
+
+  font-size: var(--wp-font-size-md);
+  font-weight: var(--wp-font-weight-semibold);
+}
+
+.table-empty-content p {
+  margin:
+    var(--wp-space-2)
+    0
+    0;
+
+  color: var(--wp-color-text-muted);
+
+  font-size: var(--wp-font-size-xs);
+}
+
+
+/* =========================================================
+   LOADING / ERROR
+   ========================================================= */
+
+.dynamic-table-state {
+  min-height: 280px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--wp-space-8);
+
+  text-align: center;
+}
+
+.dynamic-table-state p {
+  margin:
+    var(--wp-space-3)
+    0
+    0;
+
+  color: var(--wp-color-text-muted);
+
+  font-size: var(--wp-font-size-sm);
+}
+
+.table-spinner {
+  width: 32px;
+  height: 32px;
+
+  border: 3px solid var(--wp-color-primary-soft);
+  border-top-color: var(--wp-color-primary);
+
+  border-radius: 50%;
+
+  animation:
+    workpulse-table-spin
+    0.8s linear infinite;
+}
+
+.dynamic-table-state--error h3 {
+  margin:
+    var(--wp-space-4)
+    0
+    0;
+
+  color: var(--wp-color-text);
+
+  font-size: var(--wp-font-size-md);
+}
+
+.dynamic-table-state--error p {
+  max-width: 420px;
+
+  overflow-wrap: anywhere;
+}
+
+.table-error-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--wp-radius-xl);
+
+  background: var(--wp-color-danger-soft);
+
+  color: var(--wp-color-danger);
+
+  font-size: var(--wp-font-size-xl);
+  font-weight: var(--wp-font-weight-bold);
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.table-status {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 26px;
+
+  padding:
+    0
+    var(--wp-space-3);
+
+  border-radius: var(--wp-radius-pill);
+
+  font-size: var(--wp-font-size-xs);
+  font-weight: var(--wp-font-weight-medium);
+}
+
+.status-active,
+.status-approved,
+.status-completed,
+.status-success {
+  background: var(--wp-color-success-soft);
+  color: var(--wp-color-success);
+}
+
+.status-pending,
+.status-draft {
+  background: var(--wp-color-warning-soft);
+  color: var(--wp-color-warning);
+}
+
+.status-cancelled,
+.status-rejected,
+.status-error {
+  background: var(--wp-color-danger-soft);
+  color: var(--wp-color-danger);
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.table-image {
+  width: 36px;
+  height: 36px;
+
+  object-fit: cover;
+
+  border-radius: var(--wp-radius-md);
+}
+
+.table-image-placeholder {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--wp-radius-md);
+
+  background: var(--wp-color-surface-soft);
+
+  color: var(--wp-color-text-subtle);
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.table-actions {
+  white-space: nowrap;
+}
+
+.table-actions button {
+  min-height: 32px;
+
+  padding:
+    0
+    var(--wp-space-3);
+
+  border: 1px solid var(--wp-color-border);
+
+  border-radius: var(--wp-radius-md);
+
+  background: var(--wp-color-surface);
+
+  color: var(--wp-color-primary);
+
+  font-size: var(--wp-font-size-xs);
+
+  cursor: pointer;
+}
+
+.table-actions button:hover {
+  background: var(--wp-color-primary-soft);
+
+  border-color: var(--wp-color-primary);
+}
+
+.table-actions-header {
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   INTERNAL PAGINATION
+   ========================================================= */
+
+.dynamic-table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: var(--wp-space-4);
+
+  padding:
+    var(--wp-space-4)
+    var(--wp-space-5);
+
+  border-top: 1px solid var(--wp-color-border);
+}
+
+.pagination-info {
+  color: var(--wp-color-text-muted);
+
+  font-size: var(--wp-font-size-xs);
+}
+
+.pagination-info strong {
+  color: var(--wp-color-text);
+
+  font-weight: var(--wp-font-weight-semibold);
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+
+  gap: var(--wp-space-2);
+}
+
+.page-size {
+  display: flex;
+  align-items: center;
+
+  gap: var(--wp-space-2);
+
+  margin-right: var(--wp-space-2);
+
+  color: var(--wp-color-text-muted);
+
+  font-size: var(--wp-font-size-xs);
+}
+
+.page-size select {
+  height: 32px;
+
+  padding:
+    0
+    var(--wp-space-3);
+
+  border: 1px solid var(--wp-color-border);
+
+  border-radius: var(--wp-radius-md);
+
+  background: var(--wp-color-surface);
+
+  color: var(--wp-color-text);
+
+  font-size: var(--wp-font-size-xs);
+}
+
+.pagination-button,
+.pagination-page {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--wp-color-border);
+
+  border-radius: var(--wp-radius-md);
+
+  background: var(--wp-color-surface);
+
+  color: var(--wp-color-text-secondary);
+
+  font-size: var(--wp-font-size-sm);
+
+  cursor: pointer;
+}
+
+.pagination-button:hover:not(:disabled),
+.pagination-page:hover {
+  border-color: var(--wp-color-primary);
+
+  background: var(--wp-color-primary-soft);
+
+  color: var(--wp-color-primary);
+}
+
+.pagination-button:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+}
+
+.pagination-page.active {
+  border-color: var(--wp-color-primary);
+
+  background: var(--wp-color-primary);
+
+  color: var(--wp-color-text-inverse);
+}
+
+.pagination-pages {
+  display: flex;
+  align-items: center;
+
+  gap: var(--wp-space-1);
+}
+
+.pagination-page-wrapper {
+  display: inline-flex;
+  align-items: center;
+
+  gap: var(--wp-space-1);
+}
+
+.pagination-dots {
+  color: var(--wp-color-text-subtle);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .dynamic-table-container {
+    border-radius: var(--wp-radius-lg);
+  }
+
+  .dynamic-table {
+    min-width: max-content;
+  }
+
+  .dynamic-table th {
+    height: 44px;
+
+    padding:
+      var(--wp-space-3);
+  }
+
+  .dynamic-table td {
+    height: 52px;
+
+    padding:
+      var(--wp-space-3);
+  }
+
+  .dynamic-table-pagination {
+    padding:
+      var(--wp-space-3)
+      var(--wp-space-4);
+  }
+
+  .pagination-info {
+    display: none;
+  }
+
+  .pagination-controls {
+    width: 100%;
+
+    justify-content: flex-end;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .dynamic-table-header {
+    padding:
+      var(--wp-space-4);
+  }
+
+  .dynamic-table th {
+    font-size: 11px;
+  }
+
+  .dynamic-table td {
+    font-size: 12px;
+  }
+
+  .dynamic-table-pagination {
+    padding:
+      var(--wp-space-3);
+  }
+
+  .page-size {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes workpulse-table-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .table-spinner {
+    animation: none;
+  }
+}

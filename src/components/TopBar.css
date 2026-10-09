@@ -1,0 +1,219 @@
+/* =========================================================
+   WorkPulse Top Bar
+   Light Theme
+   ========================================================= */
+
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: var(--wp-z-sticky);
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  height: var(--wp-topbar-height);
+
+  border-bottom: 1px solid var(--wp-color-border);
+
+  background: rgba(255, 255, 255, 0.94);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  box-shadow: var(--wp-shadow-xs);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   Top Bar Content
+   ========================================================= */
+
+.top-bar-content {
+  width: 100%;
+  max-width: var(--wp-content-max-width);
+  height: 100%;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: var(--wp-space-4);
+
+  margin: 0 auto;
+  padding:
+    0
+    var(--wp-page-padding-desktop);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   Logo
+   ========================================================= */
+
+.top-bar-logo {
+  width: 40px;
+  height: 40px;
+
+  flex: 0 0 40px;
+
+  object-fit: contain;
+
+  border-radius: var(--wp-radius-md);
+
+  background: var(--wp-color-primary-soft);
+
+  padding: var(--wp-space-2);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   Title
+   ========================================================= */
+
+.top-bar-title {
+  min-width: 0;
+  max-width: 100%;
+
+  margin: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: var(--wp-color-text);
+
+  font-family: var(--wp-font-family);
+  font-size: var(--wp-font-size-xl);
+  font-weight: var(--wp-font-weight-semibold);
+
+  line-height: var(--wp-line-height-tight);
+  letter-spacing: var(--wp-letter-spacing-tight);
+}
+
+
+/* =========================================================
+   Small Brand Accent
+   ========================================================= */
+
+.top-bar-title::before {
+  content: "";
+
+  display: inline-block;
+
+  width: 4px;
+  height: 20px;
+
+  margin-right: var(--wp-space-3);
+
+  vertical-align: -2px;
+
+  border-radius: var(--wp-radius-pill);
+
+  background: var(--wp-color-gradient);
+}
+
+
+/* =========================================================
+   Hover / Interaction
+   ========================================================= */
+
+.top-bar-logo {
+  transition:
+    transform var(--wp-transition-normal),
+    box-shadow var(--wp-transition-normal);
+}
+
+.top-bar-logo:hover {
+  transform: scale(1.04);
+
+  box-shadow:
+    0 4px 12px rgba(37, 99, 235, 0.12);
+}
+
+
+/* =========================================================
+   Tablet
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .top-bar-content {
+    padding:
+      0
+      var(--wp-page-padding-tablet);
+  }
+}
+
+
+/* =========================================================
+   Mobile
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .top-bar-content {
+    padding:
+      0
+      var(--wp-page-padding-mobile);
+
+    gap: var(--wp-space-3);
+  }
+
+  .top-bar-logo {
+    width: 36px;
+    height: 36px;
+
+    flex-basis: 36px;
+  }
+
+  .top-bar-title {
+    font-size: var(--wp-font-size-lg);
+  }
+
+  .top-bar-title::before {
+    width: 3px;
+    height: 16px;
+
+    margin-right: var(--wp-space-2);
+  }
+}
+
+
+/* =========================================================
+   Small Mobile
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .top-bar-content {
+    padding:
+      0
+      var(--wp-space-3);
+  }
+
+  .top-bar-logo {
+    width: 34px;
+    height: 34px;
+
+    flex-basis: 34px;
+  }
+
+  .top-bar-title {
+    font-size: var(--wp-font-size-md);
+  }
+}
+
+
+/* =========================================================
+   Reduced Motion
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .top-bar-logo {
+    transition: none;
+  }
+}

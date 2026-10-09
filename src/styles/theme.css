@@ -1,0 +1,277 @@
+/* =========================================================
+   WORKPULSE DESIGN SYSTEM
+   Light Theme
+   ========================================================= */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+
+:root {
+  /* =======================================================
+     BRAND COLORS
+     ======================================================= */
+
+  --wp-color-primary: #2563eb;
+  --wp-color-primary-hover: #1d4ed8;
+  --wp-color-primary-active: #1e40af;
+  --wp-color-primary-soft: #eff6ff;
+
+  --wp-color-accent: #4f46e5;
+  --wp-color-accent-hover: #4338ca;
+  --wp-color-accent-soft: #eef2ff;
+
+  --wp-color-gradient:
+    linear-gradient(
+      135deg,
+      #2563eb 0%,
+      #4f46e5 100%
+    );
+
+
+  /* =======================================================
+     BACKGROUND
+     ======================================================= */
+
+  --wp-color-background: #f8fafc;
+
+  --wp-color-surface: #ffffff;
+  --wp-color-surface-raised: #ffffff;
+  --wp-color-surface-hover: #f8fafc;
+  --wp-color-surface-soft: #f1f5f9;
+
+
+  /* =======================================================
+     BORDERS
+     ======================================================= */
+
+  --wp-color-border: #e2e8f0;
+  --wp-color-border-strong: #cbd5e1;
+  --wp-color-border-subtle: rgba(148, 163, 184, 0.18);
+
+
+  /* =======================================================
+     TEXT
+     ======================================================= */
+
+  --wp-color-text: #0f172a;
+  --wp-color-text-secondary: #334155;
+  --wp-color-text-muted: #64748b;
+  --wp-color-text-subtle: #94a3b8;
+  --wp-color-text-inverse: #ffffff;
+
+
+  /* =======================================================
+     STATUS
+     ======================================================= */
+
+  --wp-color-success: #16a34a;
+  --wp-color-success-hover: #15803d;
+  --wp-color-success-soft: #f0fdf4;
+
+  --wp-color-warning: #d97706;
+  --wp-color-warning-hover: #b45309;
+  --wp-color-warning-soft: #fffbeb;
+
+  --wp-color-danger: #dc2626;
+  --wp-color-danger-hover: #b91c1c;
+  --wp-color-danger-soft: #fef2f2;
+
+  --wp-color-info: #2563eb;
+  --wp-color-info-soft: #eff6ff;
+
+
+  /* =======================================================
+     SPECIAL UI COLORS
+     ======================================================= */
+
+  --wp-color-overlay: rgba(15, 23, 42, 0.45);
+
+  --wp-color-focus:
+    rgba(37, 99, 235, 0.18);
+
+  --wp-color-selection:
+    rgba(37, 99, 235, 0.16);
+
+
+  /* =======================================================
+     TYPOGRAPHY
+     ======================================================= */
+
+  --wp-font-family:
+    "Poppins",
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  --wp-font-size-xs: 12px;
+  --wp-font-size-sm: 13px;
+  --wp-font-size-md: 15px;
+  --wp-font-size-lg: 16px;
+  --wp-font-size-xl: 20px;
+  --wp-font-size-2xl: 24px;
+  --wp-font-size-3xl: 32px;
+
+  --wp-font-weight-regular: 400;
+  --wp-font-weight-medium: 500;
+  --wp-font-weight-semibold: 600;
+  --wp-font-weight-bold: 700;
+
+  --wp-line-height-tight: 1.2;
+  --wp-line-height-normal: 1.5;
+  --wp-line-height-relaxed: 1.7;
+
+  --wp-letter-spacing-tight: -0.02em;
+  --wp-letter-spacing-normal: 0;
+  --wp-letter-spacing-wide: 0.04em;
+
+
+  /* =======================================================
+     SPACING
+     ======================================================= */
+
+  --wp-space-1: 4px;
+  --wp-space-2: 8px;
+  --wp-space-3: 12px;
+  --wp-space-4: 16px;
+  --wp-space-5: 20px;
+  --wp-space-6: 24px;
+  --wp-space-7: 28px;
+  --wp-space-8: 32px;
+  --wp-space-9: 36px;
+  --wp-space-10: 40px;
+  --wp-space-11: 44px;
+  --wp-space-12: 48px;
+
+
+  /* =======================================================
+     BORDER RADIUS
+     ======================================================= */
+
+  --wp-radius-xs: 6px;
+  --wp-radius-sm: 8px;
+  --wp-radius-md: 10px;
+  --wp-radius-lg: 12px;
+  --wp-radius-xl: 16px;
+  --wp-radius-2xl: 20px;
+  --wp-radius-3xl: 24px;
+  --wp-radius-pill: 999px;
+
+
+  /* =======================================================
+     CONTROL HEIGHTS
+     ======================================================= */
+
+  --wp-control-height-sm: 36px;
+  --wp-control-height-md: 44px;
+  --wp-control-height-lg: 48px;
+  --wp-control-height-xl: 52px;
+
+
+  /* =======================================================
+     LAYOUT
+     ======================================================= */
+
+  --wp-content-max-width: 100%;
+  --wp-form-max-width: 1080px;
+
+  --wp-page-padding-desktop: 32px;
+  --wp-page-padding-tablet: 24px;
+  --wp-page-padding-mobile: 16px;
+
+
+  /* =======================================================
+     TOPBAR
+     ======================================================= */
+
+  --wp-topbar-height: 72px;
+
+
+  /* =======================================================
+     SHADOWS
+     ======================================================= */
+
+  --wp-shadow-xs:
+    0 1px 2px rgba(15, 23, 42, 0.04);
+
+  --wp-shadow-sm:
+    0 4px 12px rgba(15, 23, 42, 0.06);
+
+  --wp-shadow-md:
+    0 8px 24px rgba(15, 23, 42, 0.08);
+
+  --wp-shadow-lg:
+    0 16px 40px rgba(15, 23, 42, 0.10);
+
+  --wp-shadow-xl:
+    0 24px 60px rgba(15, 23, 42, 0.12);
+
+
+  /* =======================================================
+     TRANSITIONS
+     ======================================================= */
+
+  --wp-transition-fast: 150ms ease;
+  --wp-transition-normal: 220ms ease;
+  --wp-transition-slow: 320ms ease;
+
+
+  /* =======================================================
+     Z-INDEX
+     ======================================================= */
+
+  --wp-z-base: 1;
+  --wp-z-dropdown: 100;
+  --wp-z-sticky: 200;
+  --wp-z-overlay: 300;
+  --wp-z-modal: 400;
+  --wp-z-toast: 500;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  :root {
+    --wp-page-padding-desktop: 24px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  :root {
+    --wp-page-padding-desktop: 16px;
+    --wp-form-max-width: 100%;
+
+    --wp-topbar-height: 64px;
+  }
+}
+
+
+/* =========================================================
+   TEXT SELECTION
+   ========================================================= */
+
+::selection {
+  background: var(--wp-color-selection);
+  color: var(--wp-color-text);
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --wp-transition-fast: 0ms;
+    --wp-transition-normal: 0ms;
+    --wp-transition-slow: 0ms;
+  }
+}
