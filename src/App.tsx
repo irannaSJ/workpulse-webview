@@ -152,6 +152,7 @@ function FormRoute({
 
       <FormPage
         section={section}
+        configuration={definition.configuration.id}
         onBack={() => navigate("/")}
       />
 

@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+
+import { searchLinkOptions,type LinkOption } from "../../api/workpulseApi";
 import type { ChangeEvent } from "react";
 import type { FormField } from "../../types/form";
 
@@ -5,16 +8,17 @@ interface DynamicFieldProps {
   field: FormField;
   value: unknown;
   onChange: (fieldname: string, value: unknown) => void;
+  referenceDoctype? : string;
 }
+
 
 function DynamicField({
   field,
   value,
   onChange,
+  referenceDoctype
 }: DynamicFieldProps) {
-  if (field.hidden) {
-    return null;
-  }
+
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -47,6 +51,78 @@ function DynamicField({
     required: !!field.reqd,
     placeholder: field.placeholder,
   };
+
+
+  const [linkQuery, setLinkQuery] = useState(String(value ?? ""));
+  const [linkOptions, setLinkOptions] = useState<LinkOption[]>([]);
+  const [showLinkOptions, setShowLinkOptions] = useState(false);
+  const [isSearchingLinks, setIsSearchingLinks] = useState(false);
+
+  const linkDoctype =
+    field.fieldtype === "Link" && typeof field.options === "string"
+      ? field.options.trim()
+      : "";
+
+  useEffect(() => {
+    setLinkQuery(String(value ?? ""));
+  }, [value]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    if (
+      field.fieldtype !== "Link" ||
+      !linkDoctype ||
+      !referenceDoctype ||
+      !showLinkOptions ||
+      !linkQuery.trim()
+    ) {
+      setLinkOptions([]);
+      setIsSearchingLinks(false);
+      return;
+    }
+
+    const timeoutId = window.setTimeout(async () => {
+      setIsSearchingLinks(true);
+
+      try {
+        const results = await searchLinkOptions(
+          linkDoctype,
+          linkQuery.trim(),
+          referenceDoctype,
+        );
+
+        if (!cancelled) {
+          setLinkOptions(results);
+        }
+      } catch (error) {
+        if (!cancelled) {
+          console.error("Unable to search Link records:", error);
+          setLinkOptions([]);
+        }
+      } finally {
+        if (!cancelled) {
+          setIsSearchingLinks(false);
+        }
+      }
+    }, 300);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+    };
+  }, [
+    field.fieldtype,
+    linkDoctype,
+    referenceDoctype,
+    linkQuery,
+    showLinkOptions,
+  ]);
+
+    if (field.hidden) {
+    return null;
+  }
+
 
   switch (field.fieldtype) {
     case "Data":
@@ -308,6 +384,107 @@ function DynamicField({
       );
 
     case "Link":
+      return (
+        <FieldWrapper field={field}>
+          <div style={{ position: "relative", width: "100%" }}>
+            <input
+              {...commonProps}
+              type="text"
+              autoComplete="off"
+              value={linkQuery}
+              placeholder={
+                field.options
+                  ? `Search ${field.options}`
+                  : `Search ${field.label}`
+              }
+              onChange={(event) => {
+                setLinkQuery(event.target.value);
+                setShowLinkOptions(true);
+              }}
+              onFocus={() => setShowLinkOptions(true)}
+              onBlur={() => {
+                window.setTimeout(() => setShowLinkOptions(false), 150);
+              }}
+            />
+
+            {showLinkOptions &&
+              linkDoctype &&
+              referenceDoctype &&
+              linkQuery.trim() !== "" && (
+                <div
+                  role="listbox"
+                  style={{
+                    position: "absolute",
+                    top: "100%",
+                    left: 0,
+                    right: 0,
+                    zIndex: 1000,
+                    maxHeight: "220px",
+                    overflowY: "auto",
+                    background: "var(--card-bg, white)",
+                    border: "1px solid var(--border-color, #ddd)",
+                    borderRadius: "6px",
+                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.12)",
+                  }}
+                >
+                  {isSearchingLinks ? (
+                    <div style={{ padding: "10px 12px" }}>
+                      Searching...
+                    </div>
+                  ) : linkOptions.length > 0 ? (
+                    linkOptions.map((option) => (
+                      <button
+                        key={option.value}
+                        type="button"
+                        role="option"
+                        aria-selected={String(value ?? "") === option.value}
+                        onMouseDown={(event) => event.preventDefault()}
+                        onClick={() => {
+                          setLinkQuery(option.value);
+                          setShowLinkOptions(false);
+                          setLinkOptions([]);
+
+                          // Commit only an explicitly selected record.
+                          onChange(field.fieldname, option.value);
+                        }}
+                        style={{
+                          display: "block",
+                          width: "100%",
+                          textAlign: "left",
+                          padding: "10px 12px",
+                          border: "none",
+                          borderBottom: "1px solid var(--border-color, #eee)",
+                          background: "transparent",
+                          color: "inherit",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <div>{option.value}</div>
+
+                        {option.description && (
+                          <div
+                            style={{
+                              fontSize: "12px",
+                              opacity: 0.7,
+                              marginTop: "3px",
+                            }}
+                          >
+                            {option.description}
+                          </div>
+                        )}
+                      </button>
+                    ))
+                  ) : (
+                    <div style={{ padding: "10px 12px" }}>
+                      No matching records found.
+                    </div>
+                  )}
+                </div>
+              )}
+          </div>
+        </FieldWrapper>
+      );
+
     case "Dynamic Link":
       return (
         <FieldWrapper field={field}>

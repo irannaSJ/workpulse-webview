@@ -1,20 +1,23 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 import "./FormPage.css"
 import DynamicForm from "../components/form/DynamicForm";
 
 import type { DynamicFormConfig } from "../types/form";
 import type { WorkpulseSection } from "../types/uiDefinition";
+import { saveSourceDoctypeUiRecord } from "../api/workpulseApi";
 
 import "./FormPage.css";
 
 interface FormPageProps {
   section: WorkpulseSection;
+  configuration : string;
   onBack: () => void;
 }
 
 function FormPage({
   section,
+  configuration,
   onBack,
 }: FormPageProps) {
   const formConfig = useMemo<DynamicFormConfig>(() => {
@@ -46,8 +49,38 @@ function FormPage({
     };
   }, [section]);
 
-  const handleSubmit = (values: Record<string, unknown>) => {
-    console.log("Form values:", values);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveMessage, setSaveMessage] = useState<string | null>(null);
+  const [saveError, setSaveError] = useState<string | null>(null);
+
+  const handleSubmit = async (
+    values: Record<string, unknown>,
+  ) => {
+    if (isSaving) return;
+
+    setIsSaving(true);
+    setSaveMessage(null);
+    setSaveError(null);
+
+    try {
+      const response = await saveSourceDoctypeUiRecord(
+        configuration,
+        section.id,
+        values,
+      );
+
+      setSaveMessage(
+        `${response.message} Record ID: ${response.name}`,
+      );
+    } catch (error: unknown) {
+      setSaveError(
+        error instanceof Error
+          ? error.message
+          : "Unable to save the record. Please try again.",
+      );
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   return (
@@ -92,8 +125,28 @@ function FormPage({
 
           <DynamicForm
             config={formConfig}
+            configuration={configuration}
+            sectionId={section.id}
             onSubmit={handleSubmit}
           />
+
+          {isSaving && (
+            <p role="status">
+              Saving record to ERPNext...
+            </p>
+          )}
+
+          {saveMessage && (
+            <p role="status">
+              {saveMessage}
+            </p>
+          )}
+
+          {saveError && (
+            <p role="alert">
+              Save failed: {saveError}
+            </p>
+          )}
         </div>
       </section>
     </main>
